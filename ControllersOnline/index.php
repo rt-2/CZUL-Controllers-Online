@@ -210,17 +210,17 @@
         }
 
         .tooltip .tooltiptext {
-          visibility: hidden;
-          background-color: black;
-          color: #fff;
-          text-align: center;
-          padding: 5px 10px;
-          position: absolute;
-          z-index: 1;
-          top: 150%;
-          left: 50%;
-          margin-left: -60px;
-        white-space: nowrap;
+            visibility: hidden;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 10px;
+            position: absolute;
+            z-index: 1;
+            top: 150%;
+            left: 50%;
+            margin-left: -60px;
+            white-space: nowrap;
         }
 
         .tooltip .tooltiptext::after {
@@ -336,7 +336,7 @@
 						<th>Destination</th>
 					</tr>
 				</thead>
-			<?php
+			    <?php
 				if(count($outbound_pilots) > 0)
 				{
 					foreach($outbound_pilots as $pilot)
