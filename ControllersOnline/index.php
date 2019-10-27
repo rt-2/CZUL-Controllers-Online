@@ -2,32 +2,19 @@
 <?php
 	header("Content-Type: text/html; charset=UTF-8");
     
-	class FirAirport
-	{
-		
-		public $icao = '';
-		public $name = '';
-		public $inbound_list = [];
-		public $outbound_list = [];
-		
-		static $all_list = [];
-		
-		public function __construct($icao, $name)
-		{
-			$this->icao = $icao;
-			$this->name = $name;
-			self::$all_list[$icao] = $this;
-		}
-		
-	}
+    include_once('includes/definitions.inc.php');
+    include_once('includes/airport.class.inc.php');
 
     include_once('resources/fir.lib.inc.php');
     include_once('resources/api.lib.inc.php');
     include_once('resources/actypes.lib.data.php');
 
-    //var_dump($acTypes);
+    $GLOBALS['ALL_AIRPORTS'] = array_map('str_getcsv', file('resources/airports.lib.data.csv'));
+   
+    //define('ALL_AIRPORTS', $allAirports);
+    //var_dump($allAirports);
     //echo '<textarea>';
-    //echo json_encode($acTypes);
+    //echo json_encode($GLOBALS['ALL_AIRPORTS'][0]);
     //echo '</textarea>';
 
 	$source_url = 'http://us.data.vatsim.net/vatsim-data.txt';
@@ -55,6 +42,21 @@
         }
         $return_str .= '</div>';
         return $return_str;
+    }
+    function GetAirportHTML($airport)
+    {
+        $airportName = '';
+
+        foreach($GLOBALS['ALL_AIRPORTS'] as $this_airport)
+        {
+            //var_dump($this_airport);
+            if($this_airport[APIDATA_AIRPORTS_ICAO] === $airport)
+            {
+                $airportName = $this_airport[APIDATA_AIRPORTS_NAME];
+            }
+        }
+
+        return GetTooltipHTML($airport, $airportName);
     }
     function GetAircraftTypeHTML($actypeStr)
     {
@@ -303,15 +305,9 @@
                                 <?=GetTooltipHTML($pilot['callsign'], $pilot['realname'])?>
                             </td>
 							<td>
-                                <div class="tooltip">
-                                    <?=$pilot['planned_depairport']?>
-                                    <span class="tooltiptext"><?=$pilot['realname']?></span>
-                                </div>
+                                <?=GetAirportHTML($pilot['planned_depairport'])?>
                                 &nbsp;->&nbsp;
-                                <div class="tooltip">
-                                    <?=$pilot['planned_destairport']?>
-                                    <span class="tooltiptext"><?=$pilot['realname']?></span>
-                                </div>
+                                <?=GetAirportHTML($pilot['planned_destairport'])?>
                             </td>
 						</tr>
 						<?php
@@ -354,9 +350,9 @@
                                 <?=GetTooltipHTML($pilot['callsign'], $pilot['realname'])?>
                             </td>
 							<td>
-                                <?=$pilot['planned_depairport']?>
+                                <?=GetAirportHTML($pilot['planned_depairport'])?>
                                 &nbsp;->&nbsp;
-                                <?=$pilot['planned_destairport']?>
+                                <?=GetAirportHTML($pilot['planned_destairport'])?>
                             </td>
 						</tr>
 						<?php
