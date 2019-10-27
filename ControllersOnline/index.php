@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <?php
 	header("Content-Type: text/html; charset=UTF-8");
+
+    include_once('resources/fir.lib.inc.php');
+
 	$source_url = 'http://us.data.vatsim.net/vatsim-data.txt';
 	$fetch_result = file_get_contents($source_url);
 //var_dump($fetch_result);
 	preg_match('/(?<=^\!CLIENTS\:\n)(.*)(?=^\;$\n^\;$)/msU', $fetch_result, $matches);
 	$clientColumns = ['callsign','cid','realname','clienttype','frequency','latitude','longitude','altitude','groundspeed','planned_aircraft','planned_tascruise','planned_depairport','planned_altitude','planned_destairport','server','protrevision','rating','transponder','facilitytype','visualrange','planned_revision','planned_flighttype','planned_deptime','planned_actdeptime','planned_hrsenroute','planned_minenroute','planned_hrsfuel','planned_minfuel','planned_altairport','planned_remarks','planned_route','planned_depairport_lat','planned_depairport_lon','planned_destairport_lat','planned_destairport_lon','atis_message','time_last_atis_received','time_logon','heading','QNH_iHg','QNH_Mb'];
-	$firPositions = ['CPTL_APP','CYBG_APP','CYBG_ATIS','CYBG_GND','CYBG_TWR','CYHU_ATIS','CYHU_GND','CYHU_TWR','CYOW_DEP','CYOW_APP','CYOW_ATIS','CYOW_DEL','CYOW_GND','CYOW_TWR','CYQB_APP','CYQB_ATIS','CYQB_GND','CYQB_TWR','CYRC_ATIS','CYRC_GND','CYRC_TWR','CYUL_APP','CYUL_ATIS','CYUL_A_GND','CYUL_DEL','CYUL_DEP','CYUL_GND','CYUL_L_APP','CYUL_N_APP','CYUL_N_DEP','CYUL_S_APP','CYUL_S_DEP','CYUL_TWR','CYUL_VF_APP','MTL_BZ_CTR','MTL_CTR','MTL_FG_CTR','MTL_GL_CTR','MTL_HV_CTR','MTL_LE_CTR','MTL_MC_CTR','MTL_NK_CTR','MTL_RW_CTR'];
-	
-	//$firAirports = array('CPTL','CYBG','CYHU','CYOW','CYQB','CYRC','CYUL');
+
 	class FirAirport
 	{
 		
@@ -104,8 +105,6 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	
-	
 	
 	<style type="text/css">
 		* {
