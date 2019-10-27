@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <?php
 	header("Content-Type: text/html; charset=UTF-8");
-
-    include_once('resources/fir.lib.inc.php');
-
-	$source_url = 'http://us.data.vatsim.net/vatsim-data.txt';
-	$fetch_result = file_get_contents($source_url);
-//var_dump($fetch_result);
-	preg_match('/(?<=^\!CLIENTS\:\n)(.*)(?=^\;$\n^\;$)/msU', $fetch_result, $matches);
-	$clientColumns = ['callsign','cid','realname','clienttype','frequency','latitude','longitude','altitude','groundspeed','planned_aircraft','planned_tascruise','planned_depairport','planned_altitude','planned_destairport','server','protrevision','rating','transponder','facilitytype','visualrange','planned_revision','planned_flighttype','planned_deptime','planned_actdeptime','planned_hrsenroute','planned_minenroute','planned_hrsfuel','planned_minfuel','planned_altairport','planned_remarks','planned_route','planned_depairport_lat','planned_depairport_lon','planned_destairport_lat','planned_destairport_lon','atis_message','time_last_atis_received','time_logon','heading','QNH_iHg','QNH_Mb'];
-
+    
 	class FirAirport
 	{
 		
@@ -28,10 +20,15 @@
 		}
 		
 	}
-	
-	new FirAirport('CYUL', 'Montréal/Pierre Elliott Trudeau');
-	new FirAirport('CYQB', 'Québec/Jean Lesage');
-	new FirAirport('CYOW', 'Ottawa/Macdonald-Cartier');
+
+    include_once('resources/fir.lib.inc.php');
+    include_once('resources/api.lib.inc.php');
+
+	$source_url = 'http://us.data.vatsim.net/vatsim-data.txt';
+	$fetch_result = file_get_contents($source_url);
+//var_dump($fetch_result);
+	preg_match('/(?<=^\!CLIENTS\:\n)(.*)(?=^\;$\n^\;$)/msU', $fetch_result, $matches);
+
 	
 	$all_clientsRaw = explode(PHP_EOL, $matches[0]);
 	

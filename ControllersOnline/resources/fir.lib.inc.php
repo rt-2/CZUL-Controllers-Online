@@ -1,4 +1,11 @@
 <?php
+
+new FirAirport('CYUL', 'Montréal/Pierre Elliott Trudeau');
+new FirAirport('CYMX', 'Montréal/Mirabel');
+new FirAirport('CYHU', 'Montréal/St-Hubert');
+new FirAirport('CYQB', 'Québec/Jean Lesage');
+new FirAirport('CYOW', 'Ottawa/Macdonald-Cartier');
+
 $firPositions = [
 
     // Bagotville
