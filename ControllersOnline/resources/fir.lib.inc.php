@@ -316,9 +316,7 @@ $firAirports = [
     'CAS8' => 'Roberval (Air Saguenay) Seaplane Base',
     'CAL8' => 'Ste-Anne-du-Lac (Aviation PLMG Inc.)',
     'CAA4' => 'St-Apollinaire (AirPro)',
-    'CAA2' => 'St-André-Avellin',
-    'KBOS' => 'Boston Tests',
-    'KJFK' => 'Kennedy Tests',
+    'CAA2' => 'St-André-Avellin'
 
 ];
 
