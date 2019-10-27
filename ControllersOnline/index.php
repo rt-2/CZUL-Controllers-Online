@@ -175,7 +175,7 @@
 				{
 					?>
 					<tr>
-						<td colspan="3">Aucun contrôlleur en ligne.</td>
+						<td colspan="3">Aucun contrôleurs en ligne.</td>
 					</tr>
 					<?php
 				}
