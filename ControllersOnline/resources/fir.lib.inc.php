@@ -47,6 +47,10 @@ $firPositions = [
 //
 //  FIR Airports
 //
+$atisEnabledAirports = [
+    'CYUL', 'CYOW', 'CYQB', 'CYHU', 'CYRC',
+];
+
 $firAirports = [
 
     // Class C
