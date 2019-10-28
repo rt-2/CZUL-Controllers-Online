@@ -218,8 +218,8 @@
             position: absolute;
             z-index: 1;
             top: 150%;
-            left: 50%;
-            margin-left: -60px;
+            left: -50%;
+            margin-left: -100%;
             white-space: nowrap;
         }
 
@@ -261,7 +261,9 @@
 						?>
 						<tr>
 							<td><?=$atc['frequency']?></td>
-							<td><?=$atc['callsign']?></td>
+							<td>
+                                <?=GetTooltipHTML($atc['callsign'], str_replace('^§', '<br/>', utf8_encode(urldecode($atc['atis_message']))))?>
+                            </td>
 							<td><?=$atc['realname']?><!-- (<?=$atc['rating']?>)--></td>
 						</tr>
 						<?php
