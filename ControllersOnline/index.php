@@ -262,7 +262,7 @@
 						<tr>
 							<td><?=$atc['frequency']?></td>
 							<td>
-                                <?=GetTooltipHTML($atc['callsign'], str_replace('^§', '<br/>', utf8_encode(urldecode($atc['atis_message']))))?>
+                                <?=GetTooltipHTML($atc['callsign'], str_replace('^§', '<br/>', preg_replace("/^.+\^\§/Uu", '', utf8_encode(urldecode($atc['atis_message'])))))?>
                             </td>
 							<td><?=$atc['realname']?><!-- (<?=$atc['rating']?>)--></td>
 						</tr>
