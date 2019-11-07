@@ -2,15 +2,14 @@
 <?php
 	header("Content-Type: text/html; charset=UTF-8");
     
-    include_once('includes/definitions.inc.php');
-    include_once('includes/airport.class.inc.php');
+    include_once(dirname(__FILE__).'/includes/definitions.inc.php');
+    include_once(dirname(__FILE__).'/includes/airport.class.inc.php');
 
-    include_once('resources/fir.lib.inc.php');
-    include_once('resources/api.lib.inc.php');
-    include_once('resources/actypes.lib.data.php');
+    include_once(dirname(__FILE__).'/resources/fir.lib.inc.php');
+    include_once(dirname(__FILE__).'/resources/api.lib.inc.php');
+    include_once(dirname(__FILE__).'/resources/actypes.lib.data.php');
+    include_once(dirname(__FILE__).'/resources/airports.lib.inc.php');
 
-    $GLOBALS['ALL_AIRPORTS'] = array_map('str_getcsv', file('resources/airports.lib.data.csv'));
-   
     //define('ALL_AIRPORTS', $allAirports);
     //var_dump($allAirports);
     //echo '<textarea>';
