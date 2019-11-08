@@ -236,6 +236,10 @@
         .tooltip:hover .tooltiptext {
           visibility: visible;
         }
+        a{
+            color: inherit!important;
+            text-decoration: none!important;
+        }
 	</style>
 	
 </head>
@@ -261,9 +265,13 @@
 						<tr>
 							<td><?=$atc['frequency']?></td>
 							<td>
-                                <?=GetTooltipHTML($atc['callsign'], str_replace('^§', '<br/>', preg_replace("/^.+\^\§/Uu", '', utf8_encode(urldecode($atc['atis_message'])))))?>
+                                    <?=GetTooltipHTML($atc['callsign'], str_replace('^§', '<br/>', preg_replace("/^.+\^\§/Uu", '', utf8_encode(urldecode($atc['atis_message'])))))?>
+                                
                             </td>
-							<td><?=$atc['realname']?><!-- (<?=$atc['rating']?>)--></td>
+							<td>
+                                <a href="https://stats.vatsim.net/search_id.php?id=<?=$atc['cid']?>" title="Voir les statistiques" target="_blank">
+                                <?=$atc['realname']?><!-- (<?=$atc['rating']?>)-->
+                            </a></td>
 						</tr>
 						<?php
 					}
@@ -303,7 +311,9 @@
                                 <?=GetAircraftTypeHTML($pilot['planned_aircraft'])?>
                             </td>
 							<td>
-                                <?=GetTooltipHTML($pilot['callsign'], $pilot['realname'])?>
+                                <a href="https://stats.vatsim.net/search_id.php?id=<?=$pilot['cid']?>" title="Voir les statistiques" target="_blank">
+                                    <?=GetTooltipHTML($pilot['callsign'], $pilot['realname'])?>
+                                </a>
                             </td>
 							<td>
                                 <?=GetAirportHTML($pilot['planned_depairport'])?>
@@ -348,7 +358,9 @@
                                 <?=GetAircraftTypeHTML($pilot['planned_aircraft'])?>
                             </td>
 							<td>
-                                <?=GetTooltipHTML($pilot['callsign'], $pilot['realname'])?>
+                                <a href="https://stats.vatsim.net/search_id.php?id=<?=$pilot['cid']?>" title="Voir les statistiques" target="_blank">
+                                    <?=GetTooltipHTML($pilot['callsign'], $pilot['realname'])?>
+                                </a>
                             </td>
 							<td>
                                 <?=GetAirportHTML($pilot['planned_depairport'])?>
